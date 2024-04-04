@@ -89,6 +89,55 @@
 
 /* main css */
 
+
+/* Navbar */
+.navbar-main{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 1000;
+}
+.container-nav {
+    display: flex;
+    justify-content: space-between;
+    background-color: #333;
+    height: 60px;
+    align-items: center;
+    position: relative;
+    padding: 0 0 0 30px;
+}
+.container-nav .logo{
+    color: white;
+    font-size: 35px;
+    /* position: absolute;
+    left: 30px; */
+    letter-spacing: -0.05em;
+    font-weight: 600;
+}
+.container-nav .logo span{
+    color: #77cc6d;
+}
+.container-nav .btns{
+    display: flex;
+    justify-content: space-between;
+}
+.container-nav .btns a{
+    text-decoration: none;
+    border-left: 1px solid #444;
+    height: 60px;
+    width: 60px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    color: #9B9B9B;
+    font-size: 24px;
+}
+/* Navbar */
+
+
 /* Sidebar  */
 
 .sidebar{
@@ -179,3 +228,65 @@
 }
 
 /* Sidebar  */
+
+
+/* Algorthims  */
+
+.algorithms{
+    padding: 50px;
+}
+.algorithms .cont-alg{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 40px;
+    padding: 50px 0;
+}
+.algorithms .alg{
+    text-align: center;
+    box-shadow: 0 2px 15px rgb(0 0 0 / 10%);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+.algorithms .alg:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 2px 15px rgb(0 0 0 / 20%);
+}
+
+.algorithms .alg img{
+    max-width: 100%;
+}
+.alg .info{
+    padding: 20px;
+}
+.alg p{
+    color: gray;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+.alg .more{
+    font-weight: bold;
+    font-size: 17px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #e6e6e7;
+    color: #2c98f0;
+    cursor: pointer;
+    text-decoration: none;
+}
+.alg .more i{
+    font-weight: bold;
+    font-size: larger;
+}
+.algorithms .alg:hover i{
+    animation: move-right 0.6s linear infinite;
+}
+@keyframes move-right {
+    100%{
+        transform: translateX(10px);
+    }
+}
+
+/* Algorthims  */

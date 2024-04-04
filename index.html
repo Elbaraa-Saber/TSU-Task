@@ -5,23 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <script src="https://kit.fontawesome.com/2956725901.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&display=swap" rel="stylesheet" />
 </head>
 <body>
+
     <div class="App">
-        <Navbar/>
+
+        <div class="navbar-main">
+            <div class='container-nav'>
+                <div class="logo">ELBARAA<span>.</span></div>
+                <div class='btns'>
+                    <div class="desktop-btn">
+                        <a href="#" title="Desktop view" class="icon-desktop"><i class="fa-solid fa-desktop"></i></a>
+                    </div>
+                    <div class="tablet-btn">
+                        <a href="#" title="Tablet view" class="icon-tablet"><i class="fa-solid fa-tablet-screen-button"></i></a>
+                    </div>
+                    <div class="mobile-btn">
+                        <a href="#" title="Mobile view" class="icon-mobile"><i class="fa-light fa-mobile"></i></a>
+                    </div>
+                    <div class="remove-btn">
+                        <a href="#" title="Close this bar" class="icon-remove"><i class="fa-solid fa-x"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class='container-page'>
-            <div className="sidebar">
-                <div className='container-side'>
-                    <div className='main-info'>
-                        <div className='photo'>
-                            <img src={mainPhoto} alt='My Image'/>
+            <div class="sidebar">
+                <div class='container-side'>
+                    <div class='main-info'>
+                        <div class='photo'>
+                            <img src='/imgs/mainPhoto.jpg' alt='My Image'/>
                         </div>
                         <h1>Elbaraa</h1>
                         <p>Front-End Developer</p>
                     </div>
-                    <div className='links'>
+                    <div class='links'>
                         <ul>
-                            <li className='active'>
+                            <li class='active'>
                                 <a href='#target'>Home</a>
                             </li>
                             <li>
@@ -50,7 +76,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div className='footer-sidebar'>
+                    <div class='footer-sidebar'>
                         <div >
                             © Copyright ©2024 All rights reserved | This template is made with <span></span> by Colorlib
                         </div>
@@ -58,8 +84,86 @@
                     </div>
                 </div>
             </div>
-            <Page/>
+
+            <div class="page">
+
+                <div class="algorithms">
+                    <h2 class="main-title">Algorithms</h2>
+                    <div class="cont-alg">
+                        <div class="alg">
+                            <img src='/imgs/Algr1.jpg' alt="" ></img>
+                            <div class="info">
+                                <h3>A* ALGORITHM</h3>
+                                <p>is a graph traversal and pathfinding algorithm, which is used in many fields of computer science due to its completeness, optimality, and optimal efficiency.</p>
+                            </div> 
+                            <a href="#" class="more">
+                                <span>Try algorithm</span>
+                                <i class="fa-solid fa-right-long" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                        <div class="alg">
+                            <img src='/imgs/Algr2.jpg' alt="" ></img>
+                            <div class="info">
+                                <h3>CLUSTERIZATION ALGORITHM</h3>
+                                <p>is the task of grouping a set of objects in such a way that objects in the same group are more similar to each other than to those in other groups (clusters).</p>
+                            </div> 
+                            <a href="#" class="more">
+                                <span>Try algorithm</span>
+                                <i class="fa-solid fa-right-long" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                        <div class="alg">
+                            <img src='/imgs/Algr3.jpg' alt="" ></img>
+                            <div class="info">
+                                <h3>Genetic algorithm</h3>
+                                <p>is a metaheuristic inspired by the process of natural selection that belongs to the larger class of evolutionary algorithms (EA).</p>
+                            </div> 
+                            <a href="#" class="more">
+                                <span>Try algorithm</span>
+                                <i class="fa-solid fa-right-long" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                        <div class="alg">
+                            <img src='/imgs/Algr4.jpg' alt="" ></img>
+                            <div class="info">
+                                <h3>Ant ALGORITHM</h3>
+                                <p>is a probabilistic technique for solving computational problems which can be reduced to finding good paths through graphs.</p>
+                            </div> 
+                            <a href="#" class="more">
+                                <span>Try algorithm</span>
+                                <i class="fa-solid fa-right-long" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                        <div class="alg">
+                            <img src='/imgs/Algr5.jpg' alt="" ></img>
+                            <div class="info">
+                                <h3>DECISION TREE</h3>
+                                <p>is a decision support hierarchical model that uses a tree-like model of decisions and their possible consequences, including chance event outcomes, resource costs, and utility.</p>
+                            </div> 
+                            <a href="#" class="more">
+                                <span>Try algorithm</span>
+                                <i class="fa-solid fa-right-long" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                        <div class="alg">
+                            <img src='/imgs/Algr6.jpg' alt="" ></img>
+                            <div class="info">
+                                <h3>NEURAL NETWORK</h3>
+                                <p>is a model inspired by the neuronal organization found in the biological neural networks in animal brains. Neurons can be either biological cells or mathematical models.</p>
+                            </div> 
+                            <a href="#" class="more">
+                                <span>Try algorithm</span>
+                                <i class="fa-solid fa-right-long" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
+
+
     </div>
 </body>
 </html>
