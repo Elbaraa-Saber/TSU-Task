@@ -1,5 +1,53 @@
 /* main css */
 
+:root {
+    --blue-color: #0075ff;
+    --blue-alt-color: #0d69d5;
+    --orange-color: #f59e0b;
+    --green-color: #22c55e;
+    --red-color: #f44336;
+    --grey-color: #888;
+}
+
+/* * {
+    box-sizing: border-box;
+} */
+
+body {
+    font-family: "Open Sans", sans-serif;
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+*:focus {
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+}
+ul{
+    list-style: none;
+    padding: 0;
+}
+::-webkit-scrollbar{
+    width: 15px;
+}
+::-webkit-scrollbar-track{
+    background-color: white;
+    background-color: var(--grey-color);
+}
+::-webkit-scrollbar-thumb{
+    background-color: #333333;
+}
+::-webkit-scrollbar-thumb:hover{
+    background-color: #242424;
+}
+
+
 .container-page {
     max-width: 1170px;
     margin: 0 auto;
@@ -146,7 +194,7 @@
     padding-bottom: 95px;
     float: left;
     position: fixed;
-    height: calc(100% - 150px);
+    height: calc(100% - 155px);
     overflow-y: auto;
     background-color: #f2f3f7;
 
@@ -157,9 +205,9 @@
     text-align: center;
     background-color: #f2f3f7;
 }
-.container-side .main-info{
+/* .container-side .main-info{
     margin-top: 50px;
-}
+} */
 .container-side .photo {
     margin-bottom: 30px;
 }
@@ -241,6 +289,7 @@
     height: 100%;
     padding-bottom: 80px;
     position: relative;
+    margin-top: 60px;
 }
 .home::before{
     content: "";
@@ -548,11 +597,15 @@
 .contact .box .icon{
     padding: 35px;
     background-color: #f2f3f7;
-    font-size: 25px;
+    font-size: 20px;
     color: #2c98f0;
     margin-right: 20px;
     width: 30px;
     height: 30px;
+}
+
+.contact .box i{
+    font-weight: bold;
 }
 
 .contact .info{
