@@ -15,11 +15,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&display=swap" rel="stylesheet" />
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.sound.min.js"></script>
+    <link rel="stylesheet" href="css/astar.css">
 
 <body>
     <div class="App">
@@ -95,87 +91,72 @@
 
             <div class="page">
 
-                <div class="container-fluid w-100 m-0 p-0" style="height: 100vh;">
-                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                        <div class="container">
-                            <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
-                                <ul class="navbar-nav mr-auto nav-fill w-100 align-items-center">
-                                    <li class="nav-item">
-                                        <button class="btn btn-dark my-2 my-sm-0" id="startButton" type="submit" >Start A* Search</button>
-                                    </li>
-                                    <li class="nav-item active">
-                                        <a class="nav-link" href="#" onclick="throwObstacles()">Throw Obstacles<span
-                                        class="sr-only">(current)</span></a>
-                                    </li>
-                                    <li class="nav-item active">
-                                        <a class="nav-link" href="#" onclick="resetCanvas()">Clear<span class="sr-only">(current)</span></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </nav>
+                <div id="controls" class='clear'>
 
-                    <div class="container-fluid pt-4 pb-0">
-                        <div class="row text-center" style="font-size: 23px;">
-                            <div class="col-sm-6 col-md">
-                                <div>
-                                    <span class="square"
-                                        style="height:20px; width:20px; background-color:rgb(87,50,168); display: inline-block;"></span>
-                                    Source
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md">
-                                <div>
-                                    <span class="square"
-                                        style="height:20px; width:20px; background-color:rgb(140,68,20); display: inline-block;"></span>
-                                    Destination
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md">
-                                <div>
-                                    <span class="square"
-                                        style="height:20px; width:20px; background-color:rgb(128,128,128); display: inline-block;"></span>
-                                    Obstacles
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md">
-                                <div>
-                                    <span class="square"
-                                        style="height:20px; width:20px; background-color:rgb(45, 196, 129); display: inline-block;"></span>
-                                    Unxplored Nodes
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md">
-                                <div>
-                                    <span class="square"
-                                        style="height:20px; width:20px; background-color:rgb(255, 205, 205); display: inline-block;"></span>
-                                    Explored Nodes
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md">
-                                <div>
-                                    <span class="square"
-                                        style="height:5px; width:30px; background-color:rgb(255, 0, 200); display: inline-block;"></span>
-                                    Path
-                                </div>
-                            </div>
-                    </div>
-
-
-                            <div class="row align-items-center" style="min-height: 60px;">
-                                <div class="col text-center">
-                                    <span id="message" style="font-style: italic;"></span>
-                                </div>
-                            </div>
-                    </div>
-
-                    <div id="sketch01" style="position: relative;"> </div>
+                    <label for="selectWallFrequency">Wall Frequency: </label>
+                    <select id="selectWallFrequency">
+                        <option value=".1">10%</option>
+                        <option value=".2">20%</option>
+                        <option value=".3">30%</option>
+                        <option value=".4">40%</option>
+                    </select>
+                    <br />
+                    <label for="selectGridSize">Grid Size: </label>
+                    <select id="selectGridSize" name="selectGridSize">
+                        <option value="10">10x10</option>
+                        <option value="15">15x15</option>
+                        <option value="20">20x20</option>
+                        <option value="30">30x30</option>
+                        <option value="40" selected="selected">40x40</option>
+                        <option value="50">50x50</option>
+                        <option value="100">100x100</option>
+                        <option value="150">150x150</option>
+                    </select>
+    
+                    <br />
+                    <label for="checkDebug">Show search info?</label>
+                    <input type="checkbox" name="checkDebug" id="checkDebug" />
+                    <br />
+                    <label for="searchDiagonal">Allow diagonal movement?</label>
+                    <input type="checkbox" name="searchDiagonal" id="searchDiagonal" />
+                    <br />
+                    <label for="checkClosest">Closest node if target unreachable?</label>
+                    <input type="checkbox" name="checkClosest" id="checkClosest" />
+                    <br />
+                    <label for="generateWeights">Add random weights?</label>
+                    <input type="checkbox" name="generateWeights" id="generateWeights" />
+                    <br />
+                    <label for="displayWeights">Display weight values?</label>
+                    <input type="checkbox" name="displayWeights" id="displayWeights" />
+                    <br />
+                    <input type="button" id="btnGenerate" value="Generate New Map" />
+                    <fieldset id='weightsKey'>
+                        <legend>Key:</legend>
+                        <div>
+                        <span class="grid_item weight1" style="width: 14.25px; height: 14.25px; margin-right: 6px;" id="keyWeight3"></span> Weight of 1 </div>
+                        <div>
+                        <span class="grid_item weight3" style="width: 14.25px; height: 14.25px; margin-right: 6px;" id="keyWeight3"></span> Weight of 3 </div>
+                        <div>
+                        <span class="grid_item weight5" style="width: 14.25px; height: 14.25px; margin-right: 6px;" id="keyWeight3"></span> Weight of 5 </div>
+                        <div>
+                        <span class="grid_item wall" style="width: 14.25px; height: 14.25px; margin-right: 6px;" id="keyWall"></span> Wall (imapassable) </div>
+                    </fieldset>
+                    <br />
+            <span id="message">Click on a grid position to search</span>
+            </div>
+            <div id="main">
+                <div id="search_grid">Loading grid...</div>
+            </div>
+        </div>
                 </div>
 
             </div>
         </div>
     </div>
 
-    <script type="text/javascript" src="js/sketch.js"></script>
+    <script type='text/javascript' src='js/jquery-1.7.1.min.js'></script>
+	<script type='text/javascript' src='js/astar.js'></script>
+	<!--<script type='text/javascript' src='../dist/astar-concat.js'></script>-->
+	<script type='text/javascript' src='js/demo.js'></script>
 </body>
 </html>
