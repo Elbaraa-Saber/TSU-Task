@@ -1,0 +1,44 @@
+canvas {
+    border: 5px solid red;
+}
+/*
+div {
+    margin: 20px;
+    padding: 10px 20px;
+    border: 5px solid grey;
+}*/
+
+.div1 {
+    margin: 20px;
+    padding: 10px 20px;
+    border: 5px solid grey;
+    min-height: 50px;
+}
+
+.btn {
+    height: 20px;
+    width: 200px;
+    display: inline-block;
+    background: #484d52;
+    color: #fff;
+    padding: 1rem 1.5rem;
+    text-decoration: none;
+    border-radius: 3px;
+}
+
+.exit {
+    position: absolute;
+    top: 35px;
+    right: 45px;
+}
+
+.exit1 {
+    height: 15px;
+    width: 40px;
+    display: inline-block;
+    background: #484d52;
+    color: #fff;
+    padding: 1rem 1.5rem;
+    text-decoration: none;
+    border-radius: 3px;
+}
