@@ -1,5 +1,7 @@
 canvas {
-    border: 5px solid red;
+    border: 15px solid #333333;
+    margin: 0 auto;
+    display: block;
 }
 /*
 div {
@@ -8,10 +10,43 @@ div {
     border: 5px solid grey;
 }*/
 
-.div1 {
-    margin: 20px;
+.info {
+    margin: 60px auto 10px;
     padding: 10px 20px;
-    border: 5px solid grey;
+    min-height: 50px;
+    text-align: center;
+}
+.info h1{
+    font-size: 20px;
+}
+.info label{
+    font-size: 18px;
+    margin-right: 15px;
+}
+.info input{
+    padding: 10px 20px;
+    border-radius: 6px;
+    border: none;
+    background: #333333;
+    color: white;
+    margin-right: 15px; 
+}
+.info button{
+    font-size: 17px;
+    font-weight: bold;
+    width: fit-content;
+    padding: 7px 10px;
+    border-radius: 6px;
+    border: none;
+    background: #226aa3;
+    color: white;
+    cursor: pointer;
+}
+.info button:hover{
+    background-color: #1b3c57;
+}
+.bord {
+    margin: 20px 0 0;
     min-height: 50px;
 }
 
@@ -41,4 +76,22 @@ div {
     padding: 1rem 1.5rem;
     text-decoration: none;
     border-radius: 3px;
+}
+
+.footer {
+    padding: 0 25px 15px;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer a{
+    background-color: #333333;
+    text-decoration: none;
+    color: white;
+    padding: 15px 10px;
+    border-radius: 10px;
+}
+.footer a:hover{
+    background-color: black;
 }
