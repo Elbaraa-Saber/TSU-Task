@@ -1,106 +1,224 @@
-var canvas = document.getElementById('myCanvas');
-var ctx = canvas.getContext('2d');
-var context = canvas.getContext('2d');
-canvas.addEventListener('mousedown', handleMouseDown);
+var refreshBtn = document.getElementById("refresh-btn");
+  refreshBtn.addEventListener("click", function() {
+    location.reload();
+  });
 
+// Get canvas element and context
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+
+// Set up initial variables
 var points = [];
-var pointWidth = 10; // Adjust this value for the width of the points
-var pointHeight = 10; // Adjust this value for the height of the points
+var clusters = [];
 
-function handleMouseDown(event) {
-    var x = event.clientX - canvas.offsetLeft;
-    var y = event.clientY - canvas.offsetTop;
-    context.fillStyle = 'black';
-    context.strokeStyle = 'rgba(0,0,0,0)'; // Set transparent stroke color
-    context.beginPath();
-    context.ellipse(x - 8, y - 8, pointWidth, pointHeight, 0, 0, Math.PI * 2); // Use ellipse instead of arc
-    context.fill();
-    context.stroke(); // Stroke to complete the drawing, although transparent
-    points.push({ x, y });
+// Handle mouse clicks on canvas to add points
+canvas.addEventListener("click", function(event) {
+  var rect = canvas.getBoundingClientRect();
+  var x = event.clientX - rect.left;
+  var y = event.clientY - rect.top;
+  points.push({ x: x, y: y });
+  drawPoints();
+});
+
+// Draw points on canvas
+function drawPoints() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = "black";
+  for (var i = 0; i < points.length; i++) {
+    ctx.beginPath();
+    ctx.arc(points[i].x, points[i].y, 15, 0, 2*Math.PI);
+    ctx.fill();
+  }
 }
 
-
-// Run k-means clustering
-
-function kMeans(data, k) {
-    // Initialize centroids randomly
-    let centroids = [];
-    for (let i = 0; i < k; i++) {
-        centroids.push(data[Math.floor(Math.random() * data.length)]);
-
+// Define k-means clustering function
+function kMeans(numClusters, points) {
+  // Initialize centroids randomly
+  var centroids = [];
+  for (var i = 0; i < numClusters; i++) {
+    centroids.push({
+      x: Math.floor(Math.random() * canvas.width),
+      y: Math.floor(Math.random() * canvas.height)
+    });
+  }
+  
+  // Assign each point to the nearest centroid
+  var clusters = [];
+  for (var i = 0; i < numClusters; i++) {
+    clusters.push([]);
+  }
+  for (var i = 0; i < points.length; i++) {
+    var minDist = Infinity;
+    var minIndex = -1;
+    for (var j = 0; j < centroids.length; j++) {
+      var dist = distance(points[i], centroids[j]);
+      if (dist < minDist) {
+        minDist = dist;
+        minIndex = j;
+      }
     }
-    let clusters = [];
-    for (let i = 0; i < k; i++) {
-        clusters.push([]);
+    clusters[minIndex].push(points[i]);
+  }
+  
+  // Recalculate centroids based on cluster means
+  for (var i = 0; i < numClusters; i++) {
+    var sumX = 0;
+    var sumY = 0;
+    for (var j = 0; j < clusters[i].length; j++) {
+      sumX += clusters[i][j].x;
+      sumY += clusters[i][j].y;
     }
-    // Repeat until convergence
-    let converged = false;
-    while (!converged) {
-        // Assign each data point to the closest centroid
-        for (let i = 0; i < data.length; i++) {
-            let distances = centroids.map(c => distance(data[i], c));
-            let closestCentroid = distances.indexOf(Math.min(...distances));
-            clusters[closestCentroid].push(data[i]);
-        }
+    centroids[i].x = sumX / clusters[i].length;
+    centroids[i].y = sumY / clusters[i].length;
+  }
+  
+  return clusters;
+}
 
-        // Update centroids
-        let newCentroids = [];
-        for (let i = 0; i < k; i++) {
-            let cluster = clusters[i];
-            let centroid = cluster.reduce((a, b) => ({ x: a.x + b.x, y: a.y + b.y }), { x: 0, y: 0 });
-            centroid.x /= cluster.length;
-            centroid.y /= cluster.length;
-            newCentroids.push(centroid);
+// Define hierarchical clustering function
+function hierarchical(numClusters, points) {
+  // Initialize clusters with each point as its own cluster
+  var clusters = [];
+  for (var i = 0; i < points.length; i++) {
+    clusters.push([points[i]]);
+  }
+  
+  // Merge clusters until desired number of clusters is reached
+  while (clusters.length > numClusters) {
+    var minDist = Infinity;
+    var minIndex1 = -1;
+    var minIndex2 = -1;
+    for (var i = 0; i < clusters.length; i++) {
+      for (var j = i+1; j < clusters.length; j++) {
+        var dist = clusterDistance(clusters[i], clusters[j]);
+        if (dist < minDist) {
+          minDist = dist;
+          minIndex1 = i;
+          minIndex2 = j;
         }
-
-        // Check for convergence
-        converged = true;
-        for (let i = 0; i < k; i++) {
-            if (distance(centroids[i], newCentroids[i]) > 0.0001) {
-                converged = false;
-                break;
-            }
-        }
-
-        centroids = newCentroids;
+      }
     }
-
-    return clusters;
+    clusters[minIndex1] = clusters[minIndex1].concat(clusters[minIndex2]);
+    clusters.splice(minIndex2, 1);
+  }
+  
+  return clusters;
 }
 
-function distance(a, b) {
-    // Euclidean distance between two points
-    return Math.sqrt((a.x - b.x) ** 2 + (a.y - b.y) ** 2);
-}
-
-function getRandomColor() {
-    // Generate a random RGB color string
-    const r = Math.floor(Math.random() * 256);
-    const g = Math.floor(Math.random() * 256);
-    const b = Math.floor(Math.random() * 256);
-    return `rgb(${r}, ${g}, ${b})`;
-}
-
-function startButton() {
-    // Run k-means clustering
-    var numClusters = document.getElementById("clusterNum").value;
-    const clusters = kMeans(points, numClusters);
-    // Draw clusters in different colors
-    for (let i = 0; i < clusters.length; i++) {
-        const color = getRandomColor();
-        for (let j = 0; j < clusters[i].length; j++) {
-            const { x, y } = clusters[i][j];
-            ctx.fillStyle = color;
-            ctx.beginPath();
-            // ctx.arc(x - 8, y - 8, 5, 0, Math.PI * 2);
-            // ctx.arc(x - 8, y - 8, pointWidth, pointHeight, -10, -10, Math.PI * 2);
-            context.ellipse(x - 8, y - 8, pointWidth, pointHeight, 0, 0, Math.PI * 2);
-            ctx.fill();
-        }
+// Define DBSCAN clustering function
+function dbscan(numClusters, points) {
+  // Define parameters
+  var eps = 20;
+  var minPts = 5;
+  
+  // Initialize clusters and visited status for points
+  var clusters = [];
+  var visited = new Array(points.length).fill(false);
+  
+  // Iterate over each point and expand clusters
+  for (var i = 0; i < points.length; i++) {
+    if (visited[i]) continue;
+    visited[i] = true;
+    
+    // Find nearby points
+    var neighbors = [];
+    for (var j = 0; j < points.length; j++) {
+      if (i === j) continue;
+      var dist = distance(points[i], points[j]);
+      if (dist < eps) neighbors.push(j);
     }
+    
+    // If there are fewer than minPts nearby points, mark as noise
+    if (neighbors.length < minPts) {
+      clusters.push([points[i]]);
+      continue;
+    }
+    
+    // Expand cluster to nearby points
+    var cluster = [points[i]];
+    for (var j = 0; j < neighbors.length; j++) {
+      if (visited[neighbors[j]]) continue;
+      visited[neighbors[j]] = true;
+      
+      var neighbors2 = [];
+      for (var k = 0; k < points.length; k++) {
+        if (neighbors[j] === k) continue;
+        var dist = distance(points[neighbors[j]], points[k]);
+        if (dist < eps) neighbors2.push(k);
+      }
+      
+      if (neighbors2.length >= minPts) {
+        neighbors = neighbors.concat(neighbors2);
+      }
+      
+      cluster.push(points[neighbors[j]]);
+    }
+    
+    clusters.push(cluster);
+  }
+  
+  return clusters;
 }
 
-function clearButton() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    points = [];
+// Define distance function
+function distance(p1, p2) {
+  var dx = p2.x - p1.x;
+  var dy = p2.y - p1.y;
+  return Math.sqrt(dx*dx + dy*dy);
 }
+
+// Define cluster distance function
+function clusterDistance(c1, c2) {
+  var minDist = Infinity;
+  for (var i = 0; i < c1.length; i++) {
+    for (var j = 0; j < c2.length; j++) {
+      var dist = distance(c1[i], c2[j]);
+      if (dist < minDist) {
+        minDist = dist;
+      }
+    }
+  }
+  return minDist;
+}
+
+// Handle generate button click
+var generateBtn = document.getElementById("generateBtn");
+generateBtn.addEventListener("click", function() {
+  // Clear canvas
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  
+  // Get user input
+  var numClusters = parseInt(document.getElementById("numClusters").value);
+  var algorithm = document.getElementById("algorithm").value;
+  
+  // Cluster points using chosen algorithm
+  var clusters;
+  switch (algorithm) {
+    case "kMeans":
+      clusters = kMeans(numClusters, points);
+      break;
+    case "hierarchical":
+      clusters = hierarchical(numClusters, points);
+      break;
+    case "dbscan":
+      clusters = dbscan(numClusters, points);
+      break;
+  }
+  
+  // Draw clusters on canvas
+  var colors = ["red", "green", "blue", "orange", "purple", "pink", "brown", "gray"];
+
+  for (var i = 0; i < clusters.length; i++) {
+    var color = colors[i % colors.length];
+    ctx.fillStyle = color;
+    for (var j = 0; j < clusters[i].length; j++) {
+        ctx.beginPath();
+        ctx.arc(clusters[i][j].x, clusters[i][j].y, 15, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.closePath();
+    }
+  }
+});
+
+// Draw initial set of points on canvas
+drawPoints();

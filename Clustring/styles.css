@@ -1,0 +1,93 @@
+.content{
+  background-image: url(../imgs/pexels-fwstudio-129731.jpg);
+  background-size: cover;
+}
+
+.info{
+  display: flex;
+  justify-content: space-around;
+  background-color: #333333;
+  padding: 10px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+.logo{
+  color: white;
+  font-size: 35px;
+  letter-spacing: -0.05em;
+  font-weight: 600;
+  display: block;
+  /* margin: 0 30px; */
+}
+.logo span{
+  color: #77cc6d;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.btn{
+  padding: 7px 10px;
+  font-size: 17px;
+  border: none;
+  border-radius: 6px;
+  background-color: #226aa3;
+  color: white;
+  margin-right: 15px;
+}
+
+.controls label{
+  margin-right: 10px;
+  font-size: 18px;
+  color: white;
+}
+.controls input{
+  border: none;
+  background-color: white;
+  color: black;
+  padding: 10px 8px;
+  border-radius: 10px;
+  margin-right: 30px;
+}
+
+.controls select{
+  margin-right: 20px;
+  padding: 10px 8px;
+  border: none;
+  border-radius: 10px;
+  background-color: #333333;
+  color: white;
+}
+.canvas-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+canvas{
+  margin: 0 auto;
+  /* background-color: wheat; */
+  display: block;
+  border: 15px solid #333333;
+  width:580px;
+  height: 580px ;
+}
+
+.canvas-container a{
+  background-color: #333333;
+  text-decoration: none;
+  color: white;
+  padding: 15px 10px;
+  border-radius: 10px;
+}
+.canvas-container a:first-child{
+  margin-left: 20px;
+}
+.canvas-container a:last-child{
+  margin-right: 20px;
+}
+.canvas-container a:hover{
+  background-color: black;
+}
