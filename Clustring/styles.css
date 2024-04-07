@@ -37,6 +37,7 @@
   background-color: #226aa3;
   color: white;
   margin-right: 15px;
+  cursor: pointer;
 }
 
 .controls label{
