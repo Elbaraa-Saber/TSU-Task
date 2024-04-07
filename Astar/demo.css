@@ -1,39 +1,31 @@
-
-#content {
-  margin: 60px auto 0;
-  width: 98%;
-  text-align: center;
+.content {
+  background-image: url(../imgs/pexels-pixabay-220182.jpg);
+  background-size: cover;
+  margin: 0;
 }
-h2 {
-  font-weight:normal;
-  padding-top: 30px;
-}
-.clear{
-
-}
-#header, #footer {
-	background:#ddf;
-}
-
-#footer {
-  margin-top: 20px;
-  padding: 20px;
-  background-color: white;
+#controls {
   display: flex;
-  justify-content: space-around;
-}
-#footer a{
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
   background-color: #333333;
-  text-decoration: none;
+  padding: 10px;
   color: white;
-  padding: 15px 10px;
-  border-radius: 10px;
+  align-items: center;
 }
-#footer a:hover{
-  background-color: black;
+.logo{
+  color: white;
+  font-size: 35px;
+  letter-spacing: -0.05em;
+  font-weight: 600;
+  display: block;
+  /* margin: 0 30px; */
+}
+.logo span{
+  color: #77cc6d;
 }
 .clear:after {
-	content: ".";
+  content: ".";
 	display: block;
 	height: 0;
 	clear: both;
@@ -45,16 +37,6 @@ h2 {
 	font-size:1.2em;
   display: block;
   margin: 0 auto;
-}
-#controls {
-	border: solid 3px #333333;
-	border-left:none;
-	border-right:none;
-	margin: 25px auto;
-	padding:5px 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
 }
 #search_grid  {
 	width:650px;
@@ -88,20 +70,40 @@ h2 {
 .grid_item.active {
 	background-color: #2196f3;
 }
-.grid_item.finish {
-
-}
 #weightsKey {
   display: none;
 }
 #btnGenerate{
-  background-color: #333333;
-  color: white;
+  background-color: white;
+  color: black;
   padding: 10px;
-  border: navajowhite;
+  border: none;
   border-radius: 6px;
   cursor: pointer;
 }
 #btnGenerate:hover{
+  background-color: #2196f3;
+}
+
+.main{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.main a{
+  background-color: #333333;
+  text-decoration: none;
+  color: white;
+  padding: 15px 10px;
+  border-radius: 10px;
+}
+.main a:first-child{
+  margin-left: 50px;
+}
+.main a:last-child{
+  margin-right: 50px;
+
+}
+.main a:hover{
   background-color: black;
 }
