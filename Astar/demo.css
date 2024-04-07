@@ -36,6 +36,7 @@ body {
 	height:650px;
 	position: relative;
   margin: 0 auto;
+  overflow: hidden;
 }
 .grid_item {
   display: block;
@@ -87,7 +88,6 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 20px;
 }
 .main a{
   background-color: #333333;
