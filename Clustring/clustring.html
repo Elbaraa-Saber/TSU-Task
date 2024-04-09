@@ -10,35 +10,76 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href="styles.css">
-        <link rel="stylesheet" href="../css/master.css">
+        <!-- <link rel="stylesheet" href="../css/master.css"> -->
     </head>
 <body>
+	<div class="info">
+		<a href="../index.html" class="logo">ELBARAA<span>.</span></a>
+		<div class="controls" id="controls">
+			<button class="btn" id="refresh-btn">Clear</button>
+			<div class="one">
+				<label for="numClusters">Number of clusters:</label>
+				<input type="number" id="numClusters" value="4">
+			</div>
+			<div class="two">
+				<label for="algorithm">Clustering algorithm:</label>
+				<select id="algorithm">
+					<option value="kMeans">K-Means</option>
+					<option value="hierarchical">Hierarchical</option>
+					<option value="dbscan">DBSCAN</option>
+				</select>
+			</div>
+			<button class="btn" id="generateBtn">Try Algorithm</button>
+		</div>
+	</div>
 	<div class="content">
 
-		<div class="info">
-			<a href="../index.html" class="logo">ELBARAA<span>.</span></a>
-			<div class="controls" id="controls">
-				<button class="btn" id="refresh-btn">Clear</button>
-				<div class="one">
-					<label for="numClusters">Number of clusters:</label>
-					<input type="number" id="numClusters" value="4">
+		<div class="sidebar">
+			<div class='container-side'>
+				<div class='main-info'>
+					<div class='photo'>
+						<img src='/imgs/mainPhoto.jpg' alt='My Image'/>
+					</div>
+					<h1>Elbaraa</h1>
+					<p>Front-End Developer</p>
 				</div>
-				<div class="two">
-					<label for="algorithm">Clustering algorithm:</label>
-					<select id="algorithm">
-						<option value="kMeans">K-Means</option>
-						<option value="hierarchical">Hierarchical</option>
-						<option value="dbscan">DBSCAN</option>
-						<option value="hierarchical">Mean Shift</option>
-					</select>
+				<div class='links'>
+					<ul>
+						<li>
+							<a href='../index.html'>Home</a>
+						</li>
+						<li>
+							<a href='../Astar/astar.html'>A* Algorithm</a>
+						</li>
+						<li class='active'>
+							<a href='clustring.html'>Clusterization Algorithm</a>
+						</li>
+						<li>
+							<a href='#genatic'>Genetic algorithm</a>
+						</li>
+						<li>
+							<a href='#ant'>Ant algorithm</a>
+						</li>
+						<li>
+							<a href='#decision'>Decision Tree</a>
+						</li>
+						<li>
+							<a href='#neural'>Neural network</a>
+						</li>
+					</ul>
 				</div>
-				<button class="btn" id="generateBtn">Try Algorithm</button>
+				<div class='footer-sidebar'>
+					<div >
+						© Copyright ©2024 All rights reserved | This template is made with <span></span> by Colorlib
+					</div>
+					<div>My GitHub: <a href='https://github.com/Elbaraa-Saber'>Click Me</a></div>
+				</div>
 			</div>
 		</div>
-		<div class="canvas-container" id="canvas-container">
-			<a href="../Astar/astar.html">Previous Algorithm</a>
-			<canvas id="myCanvas" width="580" height="580"></canvas>
-			<a href="#">Next Algorithm</a>
+		<div class="main">
+			<div class="canvas-container" id="canvas-container">
+				<canvas id="myCanvas" width="580" height="580"></canvas>
+			</div>
 		</div>
 	</div>
 
