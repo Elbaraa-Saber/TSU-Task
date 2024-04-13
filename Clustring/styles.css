@@ -88,11 +88,11 @@ body {
 .sidebar{
   width: 300px;
   padding-top: 2em;
-  padding-bottom: 95px;
+  padding-bottom: 60px;
   float: left;
   position: fixed;
   height: calc(100% - 155px);
-  overflow-y: auto;
+  /* overflow-y: auto; */
   background-color: #f2f3f7;
 
 }
