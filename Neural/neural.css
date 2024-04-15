@@ -11,59 +11,170 @@ body {
     height: 100vh;
 }
 
-/*Header-content*/
-.header-content {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    min-height: 100vh;
-}
-.header-content .left-header {
+.info{
     display: flex;
+    justify-content: space-between;
+    background-color: #333333;
+    padding: 10px 50px;
     align-items: center;
+    position: fixed;
+    min-width: 100%;
+}
+.logo{
+    color: white;
+    font-size: 35px;
+    letter-spacing: -0.05em;
+    font-weight: 600;
+    display: block;
+    margin: 0 30px 0 0;
+    text-decoration: none;
+}
+.logo span{
+    color: #77cc6d;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 80px;
+}
+
+.btn{
+    padding: 7px 10px;
+    font-size: 17px;
+    border: none;
+    border-radius: 6px;
+    background-color: #2c98f0;
+    color: white;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.btn:hover{
+    background-color: #226aa3;
+}
+
+
+.content{
+    background-image: url(../imgs/pexels-stephan-seeber-1261728.jpg);
+    background-size: cover;
+    padding-top: 68px;
+    height: 100%;
+}
+
+/* Sidebar  */
+
+.sidebar{
+    width: 300px;
+    padding-top: 1em;
+    padding-bottom: 60px;
+    float: left;
+    position: fixed;
+    height: 100%;
+    background-color: #f2f3f7;
+    box-shadow: 3px 0px 10px #333333;
+}
+
+.container-side {
+    width: 100%;
+    text-align: center;
+    background-color: #f2f3f7;
+    margin: 0 0 60px;
+}
+/* .container-side .main-info{
+    margin-top: 50px;
+} */
+.container-side .photo {
+    margin-bottom: 10px;
+}
+
+.container-side .photo img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+.container-side .main-info h1{
+    margin: 0 auto 10px;
+    font-size: 22px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.container-side .main-info p{
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: rgb(0 0 0 / 70%);
+}
+.container-side ul{
+    padding: 0;
+}
+.container-side li{
+    margin: 0 0 15px 0;
+    list-style: none;
+    padding: 0;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.container-side li a{
+    text-decoration: none;
+    color: rgb(0 0 0 / 70%);
+    padding: 10px 0;
     position: relative;
 }
-.header-content .left-header .h-shape {
-    transition: all 0.4s ease-in-out;
-    width: 65%;
-    height: 100%;
-    background-color: var(--color-secondaryy);
+.container-side li a::after{
+    content: '';
     position: absolute;
+    height: 1px;
+    width: 0;
+    transition: 0.3s;
+    background-color: #2c98f0;
     left: 0;
-    top: 0;
-    z-index: -1;
-    clip-path: polygon(0 0, 46% 0, 79% 100%, 0% 100%);
+    bottom: 7px;
 }
-.header-content .left-header .image {
-    border-radius: var(--br-sm-2);
-    height: auto;
-    width: auto;
-    margin-left: 4rem;
-
-    transition: all 0.4s ease-in-out;
-}
-.header-content .left-header .image img {
+.container-side li:hover > a::after,
+.container-side li.active a::after
+{
     width: 100%;
+}
+
+.container-side .footer-sidebar div:first-of-type{
+    margin: 30px auto 10px;
+    font-size: 12px;
+    color: rgb(0 0 0 / 50%);
+}
+.container-side .footer-sidebar div:last-of-type{
+    font-size: 16px;
+    color: rgb(0 0 0 / 50%);
+}
+.container-side .footer-sidebar div:last-of-type a{
+    text-decoration: none;
+    color: #2c98f0;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+/* Sidebar  */
+
+.main{
+    width: calc(100% - 300px);
+    margin: 0 0 0 auto;
     height: 100%;
-    
-    transition: all 0.4s ease-in-out;
-    filter: grayscale(100%);
-}
-.header-content .left-header .image img:hover {
-    filter: grayscale(0);
-}
-.header-content .right-header {
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    padding-right: 18rem;
+    align-items: center;
 }
-.header-content .right-header .name {
-    font-size: 3rem;
+
+
+.result{
+    font-size: 20px;
+    font-weight: bold;
+    background-color: white;
+    padding: 7px 10px;
 }
-.header-content .right-header .name span {
-    color: var(--color-secondary);
-}
-.header-content .right-header p {
-    margin: 1.5rem 0;
-    line-height: 2rem;
+
+.sketch{
+    background-color: #77cc6d;
 }
