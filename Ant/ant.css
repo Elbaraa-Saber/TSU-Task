@@ -24,9 +24,9 @@ body {
 } */
 .info{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     background-color: #333333;
-    padding: 10px;
+    padding: 10px 50px;
     align-items: center;
     position: fixed;
     min-width: 100%;
@@ -46,8 +46,9 @@ body {
 
 .controls {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    margin-right: 80px;
 }
 
 .btn{

@@ -3,7 +3,7 @@ body {
   background-size: cover;
   margin: 0;
   font-family: "Open Sans", sans-serif;
-  /* height: 5000px; */
+  height: 100vh;
 }
 
 .controls {
@@ -109,6 +109,7 @@ body {
 
 .content{
   padding-top: 120px;
+  height: 100vh;
 }
 /* Sidebar  */
 
@@ -119,9 +120,9 @@ body {
   float: left;
   position: fixed;
   height: calc(100% - 155px);
-  /* overflow-y: auto; */
+  overflow-y: auto;
   background-color: #f2f3f7;
-  box-shadow: 3px 0px 10px #333333;
+  /* box-shadow: 3px 0px 10px #333333; */
 }
 
 .container-side {
@@ -209,5 +210,7 @@ body {
 
 .main{
   width: calc(100% - 300px);
-  float: right;
+  /* float: right; */
+  /* margin-top: 20px; */
+  margin: 20px 0 0 auto;
 }
