@@ -119,9 +119,9 @@ body {
   float: left;
   position: fixed;
   height: calc(100% - 155px);
-  overflow-y: auto;
+  /* overflow-y: auto; */
   background-color: #f2f3f7;
-
+  box-shadow: 3px 0px 10px #333333;
 }
 
 .container-side {
