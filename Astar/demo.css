@@ -38,7 +38,7 @@ body {
   padding: 10px;
   color: white;
   align-items: center;
-  height: 100px
+  height: auto;
 }
 .logo{
   color: white;
@@ -267,8 +267,8 @@ pre span.key {
 
 /* Sidebar  */
 .content{
-  padding-top: 120px;
-  height: calc(100% - 120px);
+  padding-top: 82px;
+  height: calc(100% - 82px);
 }
 
 .container-canvas{
@@ -278,4 +278,70 @@ pre span.key {
 
 #search_grid{
   margin: 0 auto;
+}
+
+@media(max-width: 1200px){
+  .content{
+    padding-top: 123px;
+    height: calc(100% - 123px);
+  }
+}
+@media(max-width: 935px){
+  .content{
+    padding-top: 163px;
+    height: calc(100% - 163px);
+  }
+  .sidebar{
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 0;
+    float: none;
+    margin-top: -15px;
+  }
+  .sidebar .main-info{
+    display: none;
+  }
+  .sidebar .footer-sidebar{
+    display: none;
+  }
+  .sidebar .links ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 3px;
+    gap: 5px;
+  }
+  .container-side {
+    margin: 0;
+  }
+  .container-canvas{
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+@media(max-width: 735px){
+  .content{
+    padding-top: 202px;
+  }
+}
+@media(max-width: 650px){
+  .content{
+    padding-top: 0;
+  }
+  .info a{
+    font-size: 18px;
+    text-align: center;
+  }
+  .info{
+    display: block;
+    position: relative;
+  }
+}
+
+@media(max-width: 500px){
+  .sidebar{
+    position: relative;
+  }
 }
