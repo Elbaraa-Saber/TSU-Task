@@ -53,13 +53,6 @@ body {
 	clear: both;
 	visibility: hidden;
 } */
-#search_grid  {
-  width:650px;
-	height:650px;
-	position: relative;
-  margin: 0 auto;
-  overflow: hidden;
-}
 .grid_item {
   display: block;
 	border: 1px solid #bbb;
@@ -213,4 +206,11 @@ body {
   /* float: right; */
   /* margin-top: 20px; */
   margin: 20px 0 0 auto;
+}
+#search_grid  {
+  width: 650px;
+  height: 650px;
+  position: relative;
+  margin: 0 auto;
+  overflow: hidden;
 }

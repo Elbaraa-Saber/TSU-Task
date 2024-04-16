@@ -1,7 +1,7 @@
 const brain = require('brain.js'),
-      fs = require('fs'),
-      mnist = require('mnist'),
-      softmax = require('./lib/softmax');
+    fs = require('fs'),
+    mnist = require('mnist'),
+    softmax = require('./lib/softmax');
 
 var net = new brain.NeuralNetwork();
 
