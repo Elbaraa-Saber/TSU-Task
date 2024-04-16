@@ -1,21 +1,16 @@
 <!DOCTYPE html>
 <html>
 	<head>
-        <title>A* Search Algorithm</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        <title>Demo - JavaScript A* Search Algorithm</title>
 		<link rel="stylesheet" type="text/css" media="screen, projection" href="demo.css" />
-		<!-- <link rel="stylesheet" type="text/css" media="screen, projection" href="../css/master.css" /> -->
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js" integrity="sha384-A3YyE8P5zGAtCCSWKgnVi/U6egdW6+1y3xXqtk9C0i6sGnswtRm/lRLEhPvGnRUo" crossorigin="anonymous"></script>
-		<script src="https://kit.fontawesome.com/2956725901.js" crossorigin="anonymous"></script>
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&display=swap" rel="stylesheet" />
 	</head>
 <body>
-	<div class="App">
-		<div id="controls" class='controls'>
-			<a href="../index.html" class="logo">ELBARAA<span>.</span></a>
+	<div class="info">
+		<a href="../index.html" class="logo">ELBARAA<span>.</span></a>
+
+		<div  id="controls" class='controls clear'>
 			<div class="one">
 				<label for="selectWallFrequency">Wall Frequency: </label>
 				<select id="selectWallFrequency">
@@ -25,6 +20,7 @@
 					<option value=".4">40%</option>
 				</select>
 			</div>
+
 			<div class="two">
 				<label for="selectGridSize">Grid Size: </label>
 				<select id="selectGridSize" name="selectGridSize">
@@ -38,19 +34,32 @@
 					<option value="150">150x150</option>
 				</select>
 			</div>
+
 			<div class="three">
 				<label for="checkDebug">Show search info?</label>
 				<input type="checkbox" name="checkDebug" id="checkDebug" />
 			</div>
+			
 			<div class="four">
 				<label for="searchDiagonal">Allow diagonal movement?</label>
 				<input type="checkbox" name="searchDiagonal" id="searchDiagonal" />
 			</div>
+
 			<div class="five">
+				<label for="checkClosest">Closest node if target unreachable?</label>
+				<input type="checkbox" name="checkClosest" id="checkClosest" />
+			</div>
+
+			<div class="six">
 				<label for="generateWeights">Add random weights?</label>
 				<input type="checkbox" name="generateWeights" id="generateWeights" />
 			</div>
-			<div class="six">
+
+			<div class="seven">
+				<label for="displayWeights">Display weight values?</label>
+				<input type="checkbox" name="displayWeights" id="displayWeights" />
+			</div>
+			<div class="eight">
 				<input type="button" id="btnGenerate" value="Generate New Map" />
 				<fieldset id='weightsKey'>
 					<legend>Key:</legend>
@@ -66,59 +75,63 @@
 			</div>
 			<span id="message">Click on a grid position to search</span>
 		</div>
-		
-		<div class="content" id="content">
-			<div class="sidebar">
-				<div class='container-side'>
-					<div class='main-info'>
-						<div class='photo'>
-							<img src='/imgs/mainPhoto.jpg' alt='My Image'/>
-						</div>
-						<h1>Elbaraa</h1>
-						<p>Front-End Developer</p>
+	</div>
+
+	<div class="content" id="content">
+		<div class="sidebar">
+			<div class='container-side'>
+				<div class='main-info'>
+					<div class='photo'>
+						<img src='../imgs/mainPhoto.jpg' alt='My Image'/>
 					</div>
-					<div class='links'>
-						<ul>
-							<li >
-								<a href='../index.html'>Home</a>
-							</li>
-							<li class='active'>
-								<a href='astar.html'>A* Algorithm</a>
-							</li>
-							<li>
-								<a href='../Clustring/clustring.html'>Clusterization Algorithm</a>
-							</li>
-							<li>
-								<a href='../Genatic/genatic.html'>Genetic algorithm</a>
-							</li>
-							<li>
-								<a href='../Ant/ant.html'>Ant algorithm</a>
-							</li>
-							<li>
-								<a href='#decision'>Decision Tree</a>
-							</li>
-							<li>
-								<a href='../Neural/neural.html'>Neural network</a>
-							</li>
-						</ul>
+					<h1>Elbaraa</h1>
+					<p>Front-End Developer</p>
+				</div>
+				<div class='links'>
+					<ul>
+						<li>
+							<a href='../index.html'>Home</a>
+						</li>
+						<li class='active'>
+							<a href='astar.html'>A* Algorithm</a>
+						</li>
+						<li >
+							<a href='../Clustring/clustring.html'>Clusterization Algorithm</a>
+						</li>
+						<li>
+							<a href='../Genatic/genatic.html'>Genetic algorithm</a>
+						</li>
+						<li>
+							<a href='../Ant/ant.html'>Ant algorithm</a>
+						</li>
+						<li>
+							<a href='../Tree/tree.html'>Decision Tree</a>
+						</li>
+						<li>
+							<a href='../Neural/neural.html'>Neural network</a>
+						</li>
+					</ul>
+				</div>
+				<div class='footer-sidebar'>
+					<div >
+						© Copyright ©2024 All rights reserved | This template is made with <span></span> by Colorlib
 					</div>
-					<div class='footer-sidebar'>
-						<div >
-							© Copyright ©2024 All rights reserved | This template is made with <span></span> by Colorlib
-						</div>
-						<div>My GitHub: <a href='https://github.com/Elbaraa-Saber'>Click Me</a></div>
-					</div>
+					<div>My GitHub: <a href='https://github.com/Elbaraa-Saber'>Click Me</a></div>
 				</div>
 			</div>
+		</div>
+
+		<div class="container-canvas">
 			<div class="main" id="main">
 				<div id="search_grid">Loading grid...</div>
 			</div>
 		</div>
+
 	</div>
 
 	<script type='text/javascript' src='jquery-1.7.1.min.js'></script>
-	<script type='text/javascript' src='graph.js'></script>
 	<script type='text/javascript' src='astar.js'></script>
+	<!--<script type='text/javascript' src='../dist/astar-concat.js'></script>-->
 	<script type='text/javascript' src='demo.js'></script>
 </body>
 </html>

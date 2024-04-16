@@ -1,18 +1,39 @@
 body {
-  background-image: url(../imgs/pexels-pixabay-220182.jpg);
-  background-size: cover;
-  margin: 0;
   font-family: "Open Sans", sans-serif;
+  margin: 0;
   height: 100vh;
+  background-image: url(../imgs/concept-portrait-overstimulated-person.jpg);
+  background-size: cover;
+}
+::-webkit-scrollbar{
+  width: 15px;
+}
+::-webkit-scrollbar-track{
+  background-color: white;
+  background-color: var(--grey-color);
+}
+::-webkit-scrollbar-thumb{
+  background-color: #333333;
+}
+::-webkit-scrollbar-thumb:hover{
+  background-color: #242424;
 }
 
-.controls {
+/* 
+#graph {
+  overflow-x:scroll;
+  width: 90%;
+  font-size: .8em;
+  margin:0 auto;
+  white-space:pre;
+  border:none;
+} */
+.info{
   position: fixed;
   z-index: 1000;
   display: flex;
   justify-content: space-between;
   gap: 20px;
-  flex-wrap: wrap;
   background-color: #333333;
   padding: 10px;
   color: white;
@@ -32,29 +53,94 @@ body {
   color: #77cc6d;
 }
 
-::-webkit-scrollbar{
-  width: 15px;
+.controls {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+
 }
-::-webkit-scrollbar-track{
-  background-color: white;
-  background-color: var(--grey-color);
+.controls span {
+  display: block;
 }
-::-webkit-scrollbar-thumb{
-  background-color: #333333;
-}
-::-webkit-scrollbar-thumb:hover{
-  background-color: #242424;
+.content{
+  /* background-image: url(../imgs/pexels-fwstudio-129731.jpg); */
+  background-size: cover;
+  height: 100%;
 }
 
+#footer {
+	border-top:solid 2px #fff;
+	margin-top:20px;
+	padding-top:5px;
+}
+
+ul.basics {
+	list-style-type:none;
+}
+ul.basics li {
+	margin-bottom: .45em;
+}
+.result-panel {
+	width:80%;
+	padding:10px;
+	margin:10px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: 1px solid #000;
+}
+pre {
+	padding-left:10px;
+	border-left: solid 5px #99b;
+}
+.result-panel pre {
+	border-left: solid 5px #b99;
+}
+.result-panel pre span {
+	font-size:1.4em;
+	color: #f11;
+	font-weight:bold;
+}
+pre span.key {
+	color: #f11;
+	font-weight:normal;
+}
+
+
+.left {
+	float:left;
+}
+.right {
+	float: right;
+}
 /* .clear:after {
-  content: ".";
+	content: ".";
 	display: block;
 	height: 0;
 	clear: both;
 	visibility: hidden;
 } */
+
+#message {
+	color:#2c98f0;
+	font-size:1.2em;
+}
+/* #controls {
+	border-left:none;
+	border-right:none;
+	margin-bottom: 25px;
+	padding:5px 0;
+	width:650px;
+} */
+#search_grid  {
+	width:650px;
+	height:650px;
+	position: relative;
+}
+
 .grid_item {
-  display: block;
+	display: block;
 	border: 1px solid #bbb;
 	float: left;
 	line-height:12px;
@@ -73,49 +159,30 @@ body {
   background-color: #ABD1FF;
 }
 .grid_item.start {
-  background-color: #2196f3;
+	background-color: #FF703F;
 }
 .grid_item.active {
-  background-color: #2196f3;
+	background-color: #FF703F;
+}
+.grid_item.finish {
+
 }
 #weightsKey {
   display: none;
 }
-#btnGenerate{
-  background-color: white;
-  color: black;
-  padding: 10px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-#btnGenerate:hover{
-  background-color: #2196f3;
-}
 
-#message {
-  color:#2196f3;
-  font-size:1.2em;
-  display: block;
-  margin: 0 auto;
-}
-
-.content{
-  padding-top: 120px;
-  height: 100vh;
-}
 /* Sidebar  */
 
 .sidebar{
   width: 300px;
-  padding-top: 2em;
-  padding-bottom: 95px;
+  padding-top: 1em;
+  padding-bottom: 60px;
   float: left;
   position: fixed;
-  height: calc(100% - 155px);
-  overflow-y: auto;
+  /* margin-top: 1px; */
+  height: 100%;
   background-color: #f2f3f7;
-  /* box-shadow: 3px 0px 10px #333333; */
+  box-shadow: 3px 0px 10px #333333;
 }
 
 .container-side {
@@ -199,18 +266,16 @@ body {
 }
 
 /* Sidebar  */
-
-
-.main{
-  width: calc(100% - 300px);
-  /* float: right; */
-  /* margin-top: 20px; */
-  margin: 20px 0 0 auto;
+.content{
+  padding-top: 120px;
+  height: calc(100% - 120px);
 }
-#search_grid  {
-  width: 650px;
-  height: 650px;
-  position: relative;
+
+.container-canvas{
+  width: calc(100% - 300px);
+  margin-left: auto;
+}
+
+#search_grid{
   margin: 0 auto;
-  overflow: hidden;
 }
