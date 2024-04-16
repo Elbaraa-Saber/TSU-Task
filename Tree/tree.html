@@ -3,23 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Decision Tree</title>
     <link rel="stylesheet" href="tree.css">
     <script type="text/javascript" src="decision-tree.js"></script>
     <script type="text/javascript" src="controls.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js" integrity="sha384-A3YyE8P5zGAtCCSWKgnVi/U6egdW6+1y3xXqtk9C0i6sGnswtRm/lRLEhPvGnRUo" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/2956725901.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&display=swap" rel="stylesheet" />
+
 </head>
 <body onLoad="init()">
-    <div class="color-select" label="#33CCFF">&nbsp;</div>
-    <div class="color-select" label="#009933">&nbsp;</div>
-    <div class="color-select" label="#FF6600">&nbsp;</div>
-    <div class="color-select" label="#FFC508">&nbsp;</div>
+    <div class="info">
+        <a href="../index.html" class="logo">ELBARAA<span>.</span></a>
+        <div class="controls">
+            <div class="color-select" label="#33CCFF">&nbsp;</div>
+            <div class="color-select" label="#009933">&nbsp;</div>
+            <div class="color-select" label="#FF6600">&nbsp;</div>
+            <div class="color-select" label="#FFC508">&nbsp;</div>
+            
+            <button id="clearBtn" class="btn clearBtn">clear</button>
+        </div>
+    </div>
+    <div class="content">
+        <div class="sidebar">
+			<div class='container-side'>
+				<div class='main-info'>
+					<div class='photo'>
+						<img src='/imgs/mainPhoto.jpg' alt='My Image'/>
+					</div>
+					<h1>Elbaraa</h1>
+					<p>Front-End Developer</p>
+				</div>
+				<div class='links'>
+					<ul>
+						<li>
+							<a href='../index.html'>Home</a>
+						</li>
+						<li>
+							<a href='../Astar/astar.html'>A* Algorithm</a>
+						</li>
+						<li>
+							<a href='../Clustring/clustring.html'>Clusterization Algorithm</a>
+						</li>
+						<li >
+							<a href='../Genatic/genatic.html'>Genetic algorithm</a>
+						</li>
+						<li>
+							<a href='../Ant/ant.html'>Ant algorithm</a>
+						</li>
+						<li class='active'>
+							<a href='tree.html'>Decision Tree</a>
+						</li>
+						<li>
+							<a href='../Neural/neural.html'>Neural network</a>
+						</li>
+					</ul>
+				</div>
+				<div class='footer-sidebar'>
+					<div >
+						© Copyright ©2024 All rights reserved | This template is made with <span></span> by Colorlib
+					</div>
+					<div>My GitHub: <a href='https://github.com/Elbaraa-Saber'>Click Me</a></div>
+				</div>
+			</div>
+		</div>
+
+        <div class="main">
+            <div class="canvas-container">
+                <canvas id="myCanvas" width="400" height="400"></canvas>
+            </div>
+        </div>
+        
+        <div class="container-tree">
+            <div class="tree" id="displayTree"></div>
+        </div>
+    </div>
     
-	<button id="clearBtn" class="clearBtn">clear</button>
-	<br/>
     
-	<canvas id="myCanvas" width="400" height="400"></canvas>
-    <br/>
-    
-    <div class="tree" id="displayTree"></div>
 </body>
 </html>

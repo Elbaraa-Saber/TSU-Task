@@ -1,21 +1,202 @@
-canvas {
-    border: 1px solid #ccc;
-    margin: 30px;
-    margin-top: 5px;
+body {
+    font-family: "Open Sans", sans-serif;
+    margin: 0;
+    height: 100vh;
+}
+::-webkit-scrollbar{
+    width: 15px;
+}
+::-webkit-scrollbar-track{
+    background-color: white;
+    background-color: var(--grey-color);
+}
+::-webkit-scrollbar-thumb{
+    background-color: #333333;
+}
+::-webkit-scrollbar-thumb:hover{
+    background-color: #242424;
+}
+.info{
+    display: flex;
+    justify-content: space-around;
+    background-color: #333333;
+    padding: 10px;
+    align-items: center;
+    position: fixed;
+    min-width: 100%;
+	z-index: 1000;
+}
+.logo{
+    color: white;
+    font-size: 35px;
+    letter-spacing: -0.05em;
+    font-weight: 600;
+    display: block;
+    margin: 0 30px 0 0;
+    text-decoration: none;
+}
+.logo span{
+    color: #77cc6d;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.btn{
+    padding: 7px 10px;
+    font-size: 17px;
+    border: none;
+    border-radius: 6px;
+    background-color: #2c98f0;
+    color: white;
+    margin-left: 20px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn:hover{
+    background-color: #226aa3;
 }
 
 .color-select {
-    margin: 1px;
-    margin-top: 10px;
-    width : 30px;
-    height : 30px;
-    display:inline-block;
+    margin: 10px 10px 0 10px;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
 }
+
 
 .color-select:first-child {
     margin-left: 30px;
 }
 
+.content{
+    background-image: url(../imgs/html-system-websites-collage-design.jpg);
+	background-size: cover;
+    padding-top: 68px;
+    height: calc(100% - 67px);
+}
+/* Sidebar  */
+
+.sidebar{
+    width: 300px;
+    padding-top: 1em;
+    padding-bottom: 60px;
+    float: left;
+    position: fixed;
+    height: 100%;
+    background-color: #f2f3f7;
+    box-shadow: 3px 0px 10px #333333;
+}
+
+.container-side {
+    width: 100%;
+    text-align: center;
+    background-color: #f2f3f7;
+    margin: 0 0 60px;
+}
+/* .container-side .main-info{
+    margin-top: 50px;
+} */
+.container-side .photo {
+    margin-bottom: 10px;
+}
+
+.container-side .photo img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+.container-side .main-info h1{
+    margin: 0 auto 10px;
+    font-size: 22px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.container-side .main-info p{
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: rgb(0 0 0 / 70%);
+}
+.container-side ul{
+    padding: 0;
+}
+.container-side li{
+    margin: 0 0 15px 0;
+    list-style: none;
+    padding: 0;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.container-side li a{
+    text-decoration: none;
+    color: rgb(0 0 0 / 70%);
+    padding: 10px 0;
+    position: relative;
+}
+.container-side li a::after{
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: 0;
+    transition: 0.3s;
+    background-color: #2c98f0;
+    left: 0;
+    bottom: 7px;
+}
+.container-side li:hover > a::after,
+.container-side li.active a::after
+{
+    width: 100%;
+}
+
+.container-side .footer-sidebar div:first-of-type{
+    margin: 30px auto 10px;
+    font-size: 12px;
+    color: rgb(0 0 0 / 50%);
+}
+.container-side .footer-sidebar div:last-of-type{
+    font-size: 16px;
+    color: rgb(0 0 0 / 50%);
+}
+.container-side .footer-sidebar div:last-of-type a{
+    text-decoration: none;
+    color: #2c98f0;
+    font-size: 15px;
+    font-weight: 500;
+}
+.main{
+    width: calc(100% - 300px);
+    margin: 0 0 0 auto;
+    height: 100%;
+}
+.canvas-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+canvas{
+    margin: 0 auto;
+    display: block;
+    border: 15px solid #333333;
+	background-color: #ccc;
+}
+
+  /* Sidebar  */
+
+.container-tree{
+    width: calc(100% - 300px);
+    margin: 20px 0 20px auto;
+}
+
+/* 
 .clearBtn {
     margin-top: 12px;
     margin-left: 15px;
@@ -29,12 +210,11 @@ canvas {
     cursor: poiner;
     height: 30px;
     position: absolute;
-}
+} */
 
 /*
- Transforming nested lists to pretty tree
- 
- <div class="tree">
+Transforming nested lists to pretty tree
+<div class="tree">
     <ul>
         <li>
             <ul>
@@ -43,8 +223,8 @@ canvas {
         </li>
         ...
     </ul>
- </div>
- 
+</div>
+
 Source: http://thecodeplayer.com/walkthrough/css3-family-tree
 
 Some other advices about displaying trees: http://stackoverflow.com/questions/1695115/how-do-i-draw-the-lines-of-a-family-tree-using-html-css
@@ -95,7 +275,7 @@ Some other advices about displaying trees: http://stackoverflow.com/questions/16
 }
 
 /*We need to remove left-right connectors from elements without
- any siblings*/
+any siblings*/
 .tree li:only-child::after, .tree li:only-child::before {
 	display: none;
 }
@@ -106,7 +286,7 @@ Some other advices about displaying trees: http://stackoverflow.com/questions/16
 }
 
 /*Remove left connector from first child and
- right connector from last child*/
+right connector from last child*/
 .tree li:first-child::before, .tree li:last-child::after{
 	border: 0 none;
 }
@@ -168,4 +348,4 @@ Some other advices about displaying trees: http://stackoverflow.com/questions/16
 }
 
 /*Thats all. I hope you enjoyed it.
- Thanks :)*/
+Thanks :)*/
