@@ -206,3 +206,78 @@ canvas{
   height: 580px ; */
 }
 
+@media(max-width: 1200px){
+  .content{
+    padding-top: 81px;
+    height: 100%;
+  }
+}
+@media(max-width: 960px){
+  .info{
+    position: relative;
+  }
+  .content{
+    padding-top: 0;
+  }
+  .sidebar{
+    width: 100%;
+    height: auto;
+    padding: 0;
+    position: relative;
+  }
+  .container-side{
+    margin: 0;
+  }
+  .sidebar .main-info{
+    display: none;
+  }
+  .sidebar .footer-sidebar{
+    display: none;
+  }
+  .sidebar .links ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 6px;
+    flex-wrap: wrap;
+  }
+  .main{
+    width: 100%;
+    margin: 0 auto;
+  }
+  .canvas-container{
+    display: block;
+  }
+}
+
+@media(max-width: 680px){
+  .info{
+    position: relative;
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .info .controls{
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+
+  }
+  .info a{
+    font-size: 18px;
+    margin: 0 10px 0 0;
+  }
+  .info .btn{
+    font-size: 12px;
+  }
+  .info label{
+    font-size: 14px;
+  }
+  .info input{
+    padding: 5px 3px;
+    margin-right: 0;
+  }
+  canvas{
+    border: none;
+  }
+}
