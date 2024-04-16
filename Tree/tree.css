@@ -349,3 +349,50 @@ right connector from last child*/
 
 /*Thats all. I hope you enjoyed it.
 Thanks :)*/
+
+
+@media(max-width: 776px){
+    .info{
+        position: relative;
+    }
+    .content{
+        padding-top: 0;
+    }
+    .sidebar{
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 0;
+        float: none;    
+    }
+    .container-side{
+        margin: 0;
+    }
+    .sidebar .footer-sidebar{
+        display: none;
+    }
+    .sidebar .main-info{
+        display: none;
+    }
+    .sidebar .links ul{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 5px;
+    }
+    .main{
+        width: 100%;
+        margin: 0 auto;
+    }
+    .container-tree{
+        width: 100%;
+        margin: 0 auto;
+    }
+}
+
+@media(max-width: 450px){
+    canvas{
+        border: none;
+    }
+}
