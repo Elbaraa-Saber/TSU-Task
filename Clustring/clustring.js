@@ -117,60 +117,6 @@ function hierarchical(numClusters, points) {
 }
 
 // Define DBSCAN clustering function
-// function dbscan(numClusters, points) {
-//   // Define parameters
-//   var eps = 20;
-//   var minPts = 5;
-  
-//   // Initialize clusters and visited status for points
-//   var clusters = [];
-//   var visited = new Array(points.length).fill(false);
-  
-//   // Iterate over each point and expand clusters
-//   for (var i = 0; i < points.length; i++) {
-//     if (visited[i]) continue;
-//     visited[i] = true;
-    
-//     // Find nearby points
-//     var neighbors = [];
-//     for (var j = 0; j < points.length; j++) {
-//       if (i === j) continue;
-//       var dist = distance(points[i], points[j]);
-//       if (dist < eps) neighbors.push(j);
-//     }
-    
-//     // If there are fewer than minPts nearby points, mark as noise
-//     if (neighbors.length < minPts) {
-//       clusters.push([points[i]]);
-//       continue;
-//     }
-    
-//     // Expand cluster to nearby points
-//     var cluster = [points[i]];
-//     for (var j = 0; j < neighbors.length; j++) {
-//       if (visited[neighbors[j]]) continue;
-//       visited[neighbors[j]] = true;
-      
-//       var neighbors2 = [];
-//       for (var k = 0; k < points.length; k++) {
-//         if (neighbors[j] === k) continue;
-//         var dist = distance(points[neighbors[j]], points[k]);
-//         if (dist < eps) neighbors2.push(k);
-//       }
-      
-//       if (neighbors2.length >= minPts) {
-//         neighbors = neighbors.concat(neighbors2);
-//       }
-      
-//       cluster.push(points[neighbors[j]]);
-//     }
-    
-//     clusters.push(cluster);
-//   }
-  
-//   return clusters;
-// }
-
 function dbscan(numClusters, points) {
   // Define parameters
   var eps = 20;
@@ -274,27 +220,10 @@ generateBtn.addEventListener("click", function() {
   }
   
   // Draw clusters on canvas
-  // var colors = ["red", "green", "blue", "orange", "purple", "pink", "brown", "gray"];
-
-  // for (var i = 0; i < clusters.length; i++) {
-  //   var color = colors[i % colors.length];
-  //   ctx.fillStyle = color;
-  //   for (var j = 0; j < clusters[i].length; j++) {
-  //       ctx.beginPath();
-  //       ctx.arc(clusters[i][j].x, clusters[i][j].y, 15, 0, 2 * Math.PI);
-  //       ctx.fill();
-  //       ctx.closePath();
-  //   }
-  // }
-
-  // Draw clusters on canvas
   var colors = ["red", "green", "blue", "orange", "purple", "pink", "brown", "gray"];
 
-  // Ensure the number of clusters does not exceed the available colors
-  var numColors = Math.min(numClusters, colors.length);
-
-  for (var i = 0; i < numClusters; i++) {
-    var color = colors[i % numColors]; // Wrap around for colors
+  for (var i = 0; i < clusters.length; i++) {
+    var color = colors[i % colors.length];
     ctx.fillStyle = color;
     for (var j = 0; j < clusters[i].length; j++) {
         ctx.beginPath();
@@ -302,7 +231,7 @@ generateBtn.addEventListener("click", function() {
         ctx.fill();
         ctx.closePath();
     }
-}
+  }
 
 
 });
