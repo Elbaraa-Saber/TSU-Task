@@ -17,6 +17,8 @@
   }
 })(function() {
 
+//وظيفتها: تقوم بإنشاء مسار من النقطة المعطاة إلى نقطة البداية باستخدام الأباء المحددة في العملية السابقة لخوارزمية A*.
+
 function pathTo(node) {
   var curr = node;
   var path = [];
@@ -27,6 +29,7 @@ function pathTo(node) {
   return path;
 }
 
+//وظيفتها: تقوم بإعادة إنشاء كائن جديد من الهرم الثنائي (Binary Heap) المستخدم في عملية البحث الأمثل.
 function getHeap() {
   return new BinaryHeap(function(node) {
     return node.f;
@@ -41,10 +44,13 @@ var astar = {
   * @param {GridNode} end
   * @param {Object} [options]
   * @param {bool} [options.closest] Specifies whether to return the
-             path to the closest node if the target is unreachable.
+            path to the closest node if the target is unreachable.
   * @param {Function} [options.heuristic] Heuristic function (see
   *          astar.heuristics).
   */
+
+  //وظيفتها: تنفذ خوارزمية A* على الرسم البياني المعطى مع النقطة البداية والنهائية، مع خيارات إضافية لتحديد أقرب مسار أو دالة التقدير (heuristic).
+
   search: function(graph, start, end, options) {
     graph.cleanDirty();
     options = options || {};
@@ -53,6 +59,8 @@ var astar = {
 
     var openHeap = getHeap();
     var closestNode = start; // set the start node to be the closest if required
+
+    //وظيفتها: تحتوي على مجموعة من دوال التقدير (heuristics) المستخدمة في حساب التقدير للتكلفة المتوقعة للوصول من نقطة ما إلى النقطة المقصودة.
 
     start.h = heuristic(start, end);
     graph.markDirty(start);
@@ -154,6 +162,8 @@ var astar = {
  * @param {Object} [options]
  * @param {bool} [options.diagonal] Specifies whether diagonal moves are allowed
  */
+
+//وظيفتها: تنشئ بنية البيانات للرسم البياني، مع إعطاء الخيارات المحددة، وتحويل المصفوفة المعطاة إلى مجموعة من العقد (nodes).
 function Graph(gridIn, options) {
   options = options || {};
   this.nodes = [];
@@ -254,6 +264,9 @@ Graph.prototype.toString = function() {
   return graphString.join("\n");
 };
 
+
+//وظيفتها: تمثل عقدة في الرسم البياني، حيث يتم تمثيل الإحداثيات والوزن (weight) الخاص بالعقدة.
+
 function GridNode(x, y, weight) {
   this.x = x;
   this.y = y;
@@ -275,6 +288,9 @@ GridNode.prototype.getCost = function(fromNeighbor) {
 GridNode.prototype.isWall = function() {
   return this.weight === 0;
 };
+
+
+//وظيفتها: تقوم بإنشاء هرم ثنائي (Binary Heap) وتوفير العمليات اللازمة لإدراج وإزالة العناصر وإعادة تقييمها وتنظيمها بناءً على دالة التقدير المحددة.
 
 function BinaryHeap(scoreFunction) {
   this.content = [];

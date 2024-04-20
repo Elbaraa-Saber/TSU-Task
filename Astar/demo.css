@@ -280,6 +280,17 @@ pre span.key {
   margin: 0 auto;
 }
 
+.btn {
+  border: none;
+    padding: 7px 10px;
+    color: white;
+    background-color: #2c98f0;
+    cursor: pointer;
+}
+.btn:hover{
+  background-color: #226aa3 ;
+}
+
 @media(max-width: 1200px){
   .content{
     padding-top: 123px;

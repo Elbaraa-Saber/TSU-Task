@@ -182,6 +182,7 @@ body {
 @media(max-width: 650px){
     .info{
         position: relative;
+        padding: 0;
     }
     .content{
         padding-top: 0;

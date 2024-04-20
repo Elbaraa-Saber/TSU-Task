@@ -31,6 +31,9 @@ function drawPoints() {
   }
 }
 
+
+//هذه الدالة تقوم بتنفيذ خوارزمية k-means clustering. تهيئة النقاط البادئة وتحديد مراكز الكتل الأولية ثم تقوم بتكرار عملية تجميع النقاط حتى تتم الاستقرار. تقوم أيضًا بتحديث مراكز الكتل بناءً على متوسط النقاط في كل كتلة.
+
 // Define k-means clustering function
 function kMeans(numClusters, points) {
   // Initialize centroids from random points
@@ -86,6 +89,10 @@ function centroidsEqual(centroids1, centroids2) {
   return true;
 }
 
+
+
+//هذه الدالة تنفذ خوارزمية التجميع الهرمي (Hierarchical clustering). تهيئة النقاط كتجمعات فردية ثم تقوم بدمج الكتل المجاورة حتى يتم الوصول إلى عدد معين من الكتل.
+
 // Define hierarchical clustering function
 function hierarchical(numClusters, points) {
   // Initialize clusters with each point as its own cluster
@@ -115,6 +122,10 @@ function hierarchical(numClusters, points) {
   
   return clusters;
 }
+
+
+
+//هذه الدالة تقوم بتنفيذ خوارزمية DBSCAN clustering. تقوم بتحديد النقاط الأساسية والنقاط الضوئية في المجموعة ثم تقوم بتجميع النقاط القريبة معًا بناءً على قيمة eps وعدد النقاط الدنيا minPts.
 
 // Define DBSCAN clustering function
 function dbscan(numClusters, points) {
@@ -172,6 +183,7 @@ function dbscan(numClusters, points) {
 }
 
 
+//هذه الدالة تحسب المسافة بين نقطتين في الفضاء الثنائي.
 
 
 // Define distance function
@@ -180,6 +192,9 @@ function distance(p1, p2) {
   var dy = p2.y - p1.y;
   return Math.sqrt(dx*dx + dy*dy);
 }
+
+
+//هذه الدالة تحسب المسافة بين كتلتين من النقاط.
 
 // Define cluster distance function
 function clusterDistance(c1, c2) {

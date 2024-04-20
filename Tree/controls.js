@@ -1,3 +1,6 @@
+//هذا الملف يقوم ببناء واجهة المستخدم والتفاعل مع المستخدم لرسم النقاط وبناء الشجرة القرارية وعرضها.
+
+//هذه الدالة تقوم بتهيئة الواجهة وتفعيل المستمعين للأحداث.
 function init() {
 
     var canv = document.getElementById('myCanvas');
@@ -37,11 +40,13 @@ function init() {
 
     clearBtn.addEventListener('click', clearCanvasListener, false);
 
+    //هذا المستمع يتيح إمكانية إضافة النقاط إلى الرسم عندما يتم النقر على اللوحة.
     function enableAddingPointsListener(e) {
         e.preventDefault();
         addingPoints = true;
     }
 
+    //هذا المستمع يقوم بإضافة النقاط إلى المصفوفة points عند حدوث حركة الماوس.
     function addPointsListener(e) {
         if (addingPoints) {
             var x = e.offsetX ? e.offsetX : (e.layerX - canv.offsetLeft);
@@ -56,6 +61,7 @@ function init() {
         }
     }
 
+    //هذا المستمع يستدعي لإعادة بناء الشجرة القرارية عندما يتم الإفراج عن الزر الأيسر للماوس أو عند خروج الماوس عن اللوحة.
     function rebuildForestListener(e) {
 
         if (!addingPoints) return;
@@ -80,6 +86,7 @@ function init() {
         displayTreeDiv.innerHTML = treeToHtml(tree.root);
     }
 
+    //هذه الدالة تقوم بعرض توقعات الشجرة القرارية على اللوحة.
     function displayTreePredictions() {
         context.clearRect(0, 0, canv.width, canv.height);
         var imageData = context.getImageData(0, 0, canv.width, canv.height);
@@ -97,12 +104,14 @@ function init() {
         context.putImageData(imageData, 0, 0);
     }
 
+    //هذه الدالة تقوم بعرض النقاط الموجودة على اللوحة.
     function displayPoints() {
         for (var p in points) {
             drawCircle(context, points[p].x, points[p].y, POINT_RADIUS, points[p].color);
         }
     }
 
+    //باقي الدوال تقوم بالتحكم في الواجهة وتفاعل المستخدم مع النقاط واختيار الألوان ومسح الرسم.
     function drawCircle(context, x, y, radius, hexColor) {
         context.beginPath();
         context.arc(x, y, radius, 0, 2 * Math.PI, false);

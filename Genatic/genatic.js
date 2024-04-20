@@ -7,6 +7,8 @@ let maxGenerations = document.getElementById("maxGenerations").value;
 let pop;
 let bestPathever;
 let points = [];
+
+//هذه الدالة تُستدعى عند النقر على اللوحة الزرقاء (Canvas) لإضافة نقطة جديدة.
 function handleMouseDown(event) {
     let x = event.clientX - canvas.offsetLeft;
     let y = event.clientY - canvas.offsetTop;
@@ -17,6 +19,7 @@ function handleMouseDown(event) {
     points.push([x, y]);
 }
 
+//هذه الدالة تقوم بإنشاء مجموعة من الفرد (population)، حيث يتم توليد كل فرد بترتيب عشوائي للمدن.
 function createPopulation(populationSize, cities) {
     const population = [];
     for (let i = 0; i < populationSize; i++) {
@@ -31,6 +34,7 @@ function createPopulation(populationSize, cities) {
     return population;
 }
 
+//هذه الدالة تحسب قيمة اللياقة (fitness) لكل فرد في المجموعة. في هذه الحالة، تُقيّم اللياقة كفاءة مسار السفر بين المدن.
 function calcFitness(pattern) {
     let totalDistance = 0;
     for (let i = 0; i < pattern.length - 1; i++) {
@@ -43,6 +47,7 @@ function calcFitness(pattern) {
     return 100 / totalDistance;
 }
 
+//هذه الدالة تستخدم للعثور على الفرد الأفضل (الأكثر تميزاً) في المجموعة.
 function getFittest(cities) {
     let fittest = cities[0];
     let maxFitness = calcFitness(fittest);
@@ -56,6 +61,7 @@ function getFittest(cities) {
     return fittest;
 }
 
+//هذه الدالة تقوم بإجراء عملية التلاقي (crossover) بين فردين (parents) لإنشاء فرد جديد (offspring).
 function crossover(parentA, parentB) {
     const offspring = new Array(parentA.length);
     let start = Math.floor(Math.random() * parentA.length);
@@ -95,6 +101,8 @@ function crossover(parentA, parentB) {
     return offspring;
 }
 
+
+//هذه الدالة تُستخدم لتحديث الفرد بنسبة معينة معدل التغيير (mutation rate).
 function mutate(pattern) {
     for (let i = 0; i < pattern.length; i++) {
         if (Math.random() < mutationRate) {
@@ -106,10 +114,12 @@ function mutate(pattern) {
     }
 }
 
+//هذه الدالة تُستخدم لترتيب المجموعة بناءً على قيم اللياقة لكل فرد.
 function sortPopulationByFitness(population) {
     population.sort((a, b) => calcFitness(a) - calcFitness(b));
 }
 
+//هذه الدالة تُستخدم لرسم خط بين النقاط المحددة.
 function drawLineThroughPoints(ctx, dots) {
     if (dots.length < 2) {
         return;
@@ -131,6 +141,7 @@ function drawLineThroughPoints(ctx, dots) {
     ctx.stroke();
 }
 
+//هذه الدالة تقوم برسم النقاط على اللوحة الزرقاء.
 function drawPoints(ctx, dots) {
     ctx.fillStyle = 'black';
     ctx.moveTo(dots[0][0], dots[0][1]);
@@ -143,11 +154,14 @@ function drawPoints(ctx, dots) {
     }
 }
 
+//هذه الدالة تقوم برسم المسار الذي يمر عبر النقاط المحددة.
 function drawPath(ctx, path) {
     context.clearRect(0, 0, canvas.width, canvas.height);
     drawLineThroughPoints(ctx, path)
     drawPoints(ctx, points);
 }
+
+//هذه الدالة تُستخدم لتحريك العرض لرسم مسار السفر بين المدن.
 function animatepath(context, path) {
     // Initialize animation variables
     let animationFrame = 0;
@@ -165,6 +179,7 @@ function animatepath(context, path) {
     }, 1000 / 60); // 60 frames per second
 }
 
+//هذه الدالة تُشغّل عملية خوارزمية العمليات الوراثية لحل المسألة، حيث يتم توليد وتقييم الفراد واختيار الأفضل والتلاقي والتطور وهكذا حتى يتحقق الانتقال إلى الجيل الجديد بعدد محدد من المرات.
 function startButton() {
     mutationRate = document.getElementById("mutationRate").value;
     populationSize = document.getElementById("populationSize").value;
@@ -216,6 +231,7 @@ function startButton() {
     }
 }
 
+//هذه الدالة تقوم بمسح جميع النقاط الموجودة على اللوحة الزرقاء.
 function clearButton() {
     context.clearRect(0, 0, canvas.width, canvas.height);
     points = [];

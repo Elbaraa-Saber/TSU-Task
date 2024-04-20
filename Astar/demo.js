@@ -67,16 +67,22 @@ $(function() {
 
 var css = { start: "start", finish: "finish", wall: "wall", active: "active" };
 
+//تهيئة البحث في الرسم البياني، حيث يتم تمثيل الشبكة وتنفيذ الخوارزمية المحددة. يقوم بتهيئة الخيارات المحددة وتهيئة الشبكة البيانية وربط الأحداث مع التفاعلات.
+
 function GraphSearch($graph, options, implementation) {
     this.$graph = $graph;
     this.search = implementation;
     this.opts = $.extend({wallFrequency:0.1, debug:true, gridSize:10}, options);
     this.initialize();
 }
+//تقوم بتحديث الخيارات المحددة للبحث مثل تكرار التحديث وحجم الشبكة والتشخيص، وتقوم بإعادة رسم الواجهة إذا لزم الأمر.
+
 GraphSearch.prototype.setOption = function(opt) {
     this.opts = $.extend(this.opts, opt);
     this.drawDebugInfo();
 };
+//تهيئة الشبكة البيانية وتنشئ جميع الخلايا مع تعيين الخلية البداية والجدران والأوزان (إذا تم تمكين هذا الخيار).
+
 GraphSearch.prototype.initialize = function() {
     this.grid = [];
     var self = this,
@@ -134,6 +140,8 @@ GraphSearch.prototype.initialize = function() {
         self.cellClicked($(this));
     });
 };
+//يتم استدعاؤه عندما ينقر المستخدم على خلية، حيث يقوم بتشغيل البحث وعرض المسار الموجود بالإضافة إلى تحديث المعلومات التشخيصية.
+
 GraphSearch.prototype.cellClicked = function($end) {
 
     var end = this.nodeFromElement($end);
@@ -165,6 +173,8 @@ GraphSearch.prototype.cellClicked = function($end) {
         this.animatePath(path);
     }
 };
+//يقوم برسم معلومات التشخيص على الخلايا، مثل قيم f، g، h لكل خلية.
+
 GraphSearch.prototype.drawDebugInfo = function() {
     this.$cells.html(" ");
     var that = this;
@@ -182,6 +192,9 @@ GraphSearch.prototype.drawDebugInfo = function() {
         });
     }
 };
+
+//يقوم بإرجاع العقدة المقابلة للخلية في الواجهة.
+
 GraphSearch.prototype.nodeFromElement = function($cell) {
     return this.graph.grid[parseInt($cell.attr("x"))][parseInt($cell.attr("y"))];
 };

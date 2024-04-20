@@ -16,6 +16,8 @@ let distances;
 let pheromones;
 //get the input from the user
 let points = [];
+
+//هذه الدالة تتماشى مع حدث mousedown على اللوحة (canvas) حيث تسجل الموقع النقطي (x, y) للنقرة وتقوم برسم نقطة سوداء على الشاشة في هذا الموقع. تُضاف هذه النقطة إلى قائمة النقاط.
 function handleMouseDown(event) {
     let x = event.clientX - canvas.offsetLeft;
     let y = event.clientY - canvas.offsetTop;
@@ -25,12 +27,16 @@ function handleMouseDown(event) {
     context.fill();
     points.push([x, y]);
 }
+
+//هذه الدالة تحسب المسافة بين نقطتين معينتين في الإحداثيات (x, y) باستخدام معادلة المسافة بين نقطتين في الفضاء.
 function calcDist(point1, point2) {
     const dx = point2[0] - point1[0];
     const dy = point2[1] - point1[1];
     dist = Math.sqrt(dx * dx + dy * dy);
     return dist;
 }
+
+//هذه الدالة تقوم بإنشاء مصفوفة الجراف (graph matrix) التي تحتوي على المسافات بين كل زوج من النقاط المحددة على الشاشة.
 function createGraph(dots) {
     let n = dots.length;
     let graph = [];
@@ -45,6 +51,7 @@ function createGraph(dots) {
     return graph;
 }
 
+//هذه الدالة تقوم بتنفيذ خوارزمية النمل لحل مشكلة المسافة الأقصر للمتجول التجاري (TSP). تقوم بإنشاء مصفوفة الفيرومونات (pheromone matrix) وتكرار عملية اختيار المسارات وتحديث مستويات الفيرومونات لعدد معين من التكرارات.
 function antColonyOptimizationTSP(distanceMatrix, numAnts, numIterations, evaporationRate, alpha, beta, q) {
     // Initialize pheromone matrix with a constant value
     pheromoneMatrix = [];
@@ -92,6 +99,7 @@ function antColonyOptimizationTSP(distanceMatrix, numAnts, numIterations, evapor
     return bestTour;
 }
 
+//هذه الدالة تقوم بإنشاء نملة (ant) تمثل وكيلًا يتبع مسارًا محتملاً في الرحلة. تقوم بتحديد المسار المحتمل باستخدام قواعد الفيرومونات ومعلومات المسافة.
 function createAnt(distanceMatrix, pheromoneMatrix, alpha, beta) {
     const numCities = distanceMatrix.length;
     const visited = new Set();
@@ -139,6 +147,7 @@ function createAnt(distanceMatrix, pheromoneMatrix, alpha, beta) {
     return { tour };
 }
 
+//هذه الدالة تحسب طول المسار الذي يقطعه النملة في الجولة باستخدام مصفوفة المسافات.
 function calculateTourLength(tour, distanceMatrix) {
     let tourLength = 0;
     for (let i = 0; i < tour.length - 1; i++) {
@@ -151,6 +160,8 @@ function calculateTourLength(tour, distanceMatrix) {
     return tourLength;
 }
 
+
+//هذه الدالة تقوم بتحديث مصفوفة الفيرومونات بناءً على الجولات التي قامت بها النمل
 function updatePheromoneLevels(ants, distanceMatrix, pheromoneMatrix, evaporationRate, q) {
     // Initialize a delta matrix
     const deltaMatrix = [];
@@ -182,6 +193,7 @@ function updatePheromoneLevels(ants, distanceMatrix, pheromoneMatrix, evaporatio
     }
 }
 
+//هذه الدالة تقوم برسم خط بين مجموعة من النقاط على اللوحة.
 function drawLineThroughPoints(ctx, dots) {
     if (dots.length < 2) {
         return;
@@ -203,6 +215,7 @@ function drawLineThroughPoints(ctx, dots) {
     ctx.stroke();
 }
 
+//هذه الدالة تقوم برسم النقاط على اللوحة.
 function drawPoints(ctx, dots) {
     ctx.fillStyle = 'black';
     ctx.moveTo(dots[0][0], dots[0][1]);
@@ -215,11 +228,14 @@ function drawPoints(ctx, dots) {
     }
 }
 
+//هذه الدالة تقوم برسم المسار الذي يتبعه النمل على اللوحة.
 function drawPath(ctx, path) {
     context.clearRect(0, 0, canvas.width, canvas.height);
     drawLineThroughPoints(ctx, path);
     drawPoints(ctx, points);
 }
+
+//هذه الدالة تقوم برسم مستويات الفيرومونات على اللوحة باستخدام مستوى الفيرومون المحدد ومصفوفة المسافات.
 function drawPheromoneTrails(pheromoneLevels, distanceMatrix) {
     context.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
     // Find maximum pheromone level to normalize opacity
@@ -241,6 +257,8 @@ function drawPheromoneTrails(pheromoneLevels, distanceMatrix) {
     }
     drawPoints(context, points);
 }
+
+//هذه الدالة تقوم برسم الفيرومونات بشكل متحرك لعدد معين من الإطارات.
 function animate(pheromoneLevels, distanceMatrix) {
     // Initialize animation variables
     let animationFrame = 0;
@@ -259,6 +277,8 @@ function animate(pheromoneLevels, distanceMatrix) {
     }, 1000 / 30); // 60 frames per second
 }
 
+
+//هذه الدالة تقوم برسم المسار بشكل متحرك لعدد معين من الإطارات.
 function animatepath(context, path) {
     // Initialize animation variables
     let animationFrame = 0;
@@ -276,6 +296,8 @@ function animatepath(context, path) {
         }
     }, 1000 / 30); // 60 frames per second
 }
+
+//هذه الدالة تبدأ عملية تنفيذ خوارزمية النمل وعرض النتائج على اللوحة.
 function startButton() {
     numIterations = document.getElementById("numIterations").value;
     distances = createGraph(points);
@@ -288,6 +310,7 @@ function startButton() {
     animatepath(context, path);
 }
 
+// هذه الدالة تقوم بمسح جميع النقاط الموجودة على اللوحة.
 function clearButton() {
     context.clearRect(0, 0, canvas.width, canvas.height);
     points = [];

@@ -1,12 +1,15 @@
+//هذا الملف يحتوي على الوظائف الرئيسية لبناء وتصنيف الشجرة القرارية وإنشاء مجموعة الشجيرات العشوائية.
+
 var dt = (function () {
-            
+    
     /**
      * Creates an instance of DecisionTree
-     *
-     * @constructor
-     * @param builder - contains training set and
-     *                  some configuration parameters
-     */
+    *
+    * @constructor
+    * @param builder - contains training set and
+    *                  some configuration parameters
+    */
+   //هذا المنشئ يقوم ببناء شجرة قرارية باستخدام البيانات التدريبية المعطاة.
     function DecisionTree(builder) {        
         this.root = buildDecisionTree({
             trainingSet: builder.trainingSet,
@@ -18,6 +21,7 @@ var dt = (function () {
         });
     }
 
+    //هذه الدالة تقوم بتصنيف عنصر جديد باستخدام الشجرة القرارية.
     DecisionTree.prototype.predict = function (item) {
         return predict(this.root, item);
     }
@@ -311,6 +315,8 @@ var dt = (function () {
     /**
      * Classifying item, using decision tree
      */
+
+    //هذه الدالة تقوم بتصنيف عنصر جديد باستخدام الشجرة القرارية.
     function predict(tree, item) {
         var attr,
             value,
@@ -343,6 +349,8 @@ var dt = (function () {
     /**
      * Building array of decision trees
      */
+
+    //هذا المنشئ يقوم ببناء مجموعة من الشجيرات القرارية العشوائية.
     function buildRandomForest(builder, treesNumber) {
         var items = builder.trainingSet;
         
@@ -377,6 +385,8 @@ var dt = (function () {
      * all classifying results, and number of votes 
      * which were given for each of classifying results
      */
+
+    //هذه الدالة تقوم بتصنيف عنصر جديد باستخدام مجموعة من الشجيرات القرارية العشوائية.
     function predictRandomForest(forest, item) {
         var result = {};
         for (var i in forest) {

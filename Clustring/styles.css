@@ -256,6 +256,7 @@ canvas{
     max-width: 100%;
     display: flex;
     flex-wrap: wrap;
+    padding: 0;
   }
   .info .controls{
     max-width: 100%;

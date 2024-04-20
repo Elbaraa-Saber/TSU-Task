@@ -202,6 +202,7 @@ canvas {
     justify-content: space-between;
     align-items: center;
     height: 100%;
+    overflow: hidden;
 }
 canvas{
     margin: 0 auto;
@@ -213,6 +214,7 @@ canvas{
         position: relative;
         display: flex;
         flex-wrap: wrap;
+        padding: 0;
     }
     .info .controls{
         flex-wrap: wrap;
